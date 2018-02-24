@@ -23,6 +23,6 @@ options = {
 }
 
 tweets = client.user_timeline(user_handle, options)
-tweets.each do |tweet, index|
+tweets.each do |tweet|
   puts "tweet #{tweet.id}: #{tweet.text}"
 end

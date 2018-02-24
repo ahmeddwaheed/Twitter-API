@@ -1,7 +1,5 @@
 # Twitter-API
 
-## Tweets
-
 Fetch any user's tweets based on the credentials you have
 
 ### Requirements
