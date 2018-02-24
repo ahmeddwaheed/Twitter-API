@@ -12,14 +12,12 @@ Fetch any user's tweets based on the credentials you have
 
 * Create twitter application
 * Install dependencies
-`
+```
 bundle install
-
-`
+```
 * Copy `.env.example` to `.env`
 * Set variables values in `.env`
 * Run
-`
+```
 env `cat .env` ./main.rb
-
-`
+```
