@@ -1,6 +1,6 @@
 # Twitter-API
 
-Fetch any user's tweets based on the credentials you have
+Fetch any public user's tweets based on the credentials you have
 
 ### Requirements
 * Ruby version 2.4.1
