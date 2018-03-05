@@ -16,13 +16,22 @@ logger.info('Loading tweets...')
 
 user_handle = ENV['USER_HANDLE']
 
-options = {
-  count: 200,
-  include_rts: false,
-  exclude_replies: true
-}
-
-tweets = client.user_timeline(user_handle, options)
-tweets.each do |tweet|
-  puts "tweet #{tweet.id}: #{tweet.text}"
+def collect_with_max_id(collection=[], max_id=nil, &block)
+  response = yield(max_id)
+  collection += response
+  response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
 end
+
+def client.get_max_tweets(user)
+  collect_with_max_id do |max_id|
+    options = {
+      count: 200,
+      include_rts: true,
+      exclude_replies: true
+    }
+    options[:max_id] = max_id unless max_id.nil?
+    user_timeline(user, options)
+  end
+end
+
+tweets = client.get_max_tweets(user_handle)
